@@ -50,14 +50,55 @@ public:
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(800, 600);
         MainWindow->setAutoFillBackground(false);
+        MainWindow->setStyleSheet(QLatin1String("QPushButton {\n"
+"color: #333;\n"
+"border: 2px solid #555;\n"
+"border-radius: 11px;\n"
+"padding: 5px;\n"
+"background: qradialgradient(cx: 0.3, cy: -0.4,\n"
+"fx: 0.3, fy: -0.4,\n"
+"radius: 1.35, stop: 0 #fff, stop: 1 #888);\n"
+"min-width: 80px;\n"
+"}\n"
+"\n"
+" QPushButton:hover {\n"
+"background: qradialgradient(cx: 0.3, cy: -0.4,\n"
+"fx: 0.3, fy: -0.4,\n"
+"radius: 1.35, stop: 0 #fff, stop: 1 #bbb);\n"
+"}\n"
+"\n"
+" QPushButton:pressed {\n"
+"background: qradialgradient(cx: 0.4, cy: -0.1,\n"
+"fx: 0.4, fy: -0.1,\n"
+"radius: 1.35, stop: 0 #fff, stop: 1 #ddd);\n"
+"}\n"
+"\n"
+"QLineEdit{\n"
+"color: #333;\n"
+"border: 2px solid #555;\n"
+"border-radius: 11px;\n"
+"padding: 5px;\n"
+"background: qradialgradient(cx: 0.3, cy: -0.4,\n"
+"fx: 0.3, fy: -0.4,\n"
+"radius: 1.35, stop: 0 #fff, stop: 1 #888);\n"
+"min-width: 80px;\n"
+"}\n"
+" QLineedit:hover {\n"
+"background: qradialgradient(cx: 0.3, cy: -0.4,\n"
+"fx: 0.3, fy: -0.4,\n"
+"radius: 1.35, stop: 0 #fff, stop: 1 #bbb);\n"
+"}\n"
+"\n"
+"\n"
+""));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(0, 0, 47, 13));
+        label->setGeometry(QRect(0, 0, 94, 13));
         Version_Text = new QLabel(centralWidget);
         Version_Text->setObjectName(QStringLiteral("Version_Text"));
-        Version_Text->setGeometry(QRect(120, 30, 111, 21));
+        Version_Text->setGeometry(QRect(120, 0, 111, 41));
         QFont font;
         font.setFamily(QStringLiteral("Javanese Text"));
         font.setPointSize(14);
@@ -67,7 +108,7 @@ public:
         Version_Text->setFont(font);
         MainText = new QLabel(centralWidget);
         MainText->setObjectName(QStringLiteral("MainText"));
-        MainText->setGeometry(QRect(200, 60, 561, 31));
+        MainText->setGeometry(QRect(200, 50, 561, 51));
         QFont font1;
         font1.setFamily(QStringLiteral("Javanese Text"));
         font1.setPointSize(20);
@@ -80,7 +121,7 @@ public:
         AddUserLabel->setGeometry(QRect(660, 440, 161, 71));
         AddUser_Button = new QPushButton(centralWidget);
         AddUser_Button->setObjectName(QStringLiteral("AddUser_Button"));
-        AddUser_Button->setGeometry(QRect(660, 510, 61, 31));
+        AddUser_Button->setGeometry(QRect(640, 510, 94, 31));
         QFont font2;
         font2.setPointSize(10);
         font2.setBold(false);
@@ -90,7 +131,7 @@ public:
         AddUser_Button->setFont(font2);
         frame = new QFrame(centralWidget);
         frame->setObjectName(QStringLiteral("frame"));
-        frame->setGeometry(QRect(250, 120, 251, 301));
+        frame->setGeometry(QRect(260, 80, 331, 311));
         QPalette palette;
         QBrush brush(QColor(0, 0, 0, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -160,17 +201,41 @@ public:
         frame->setFrameShadow(QFrame::Raised);
         UserName_LineEdit = new QLineEdit(frame);
         UserName_LineEdit->setObjectName(QStringLiteral("UserName_LineEdit"));
-        UserName_LineEdit->setGeometry(QRect(70, 100, 171, 20));
+        UserName_LineEdit->setGeometry(QRect(70, 100, 171, 31));
         UserPassWord_LineEdit = new QLineEdit(frame);
         UserPassWord_LineEdit->setObjectName(QStringLiteral("UserPassWord_LineEdit"));
-        UserPassWord_LineEdit->setGeometry(QRect(70, 150, 171, 20));
+        UserPassWord_LineEdit->setGeometry(QRect(70, 150, 171, 31));
         UserPassWord_LineEdit->setEchoMode(QLineEdit::Password);
         LoginButton = new QPushButton(frame);
         LoginButton->setObjectName(QStringLiteral("LoginButton"));
         LoginButton->setGeometry(QRect(70, 220, 171, 31));
+        LoginButton->setStyleSheet(QLatin1String("\n"
+"\n"
+"#Mainwindow LoginButton {\n"
+"color: #333;\n"
+"border: 2px solid #555;\n"
+"border-radius: 11px;\n"
+"padding: 5px;\n"
+"background: qradialgradient(cx: 0.3, cy: -0.4,\n"
+"fx: 0.3, fy: -0.4,\n"
+"radius: 1.35, stop: 0 #fff, stop: 1 #888);\n"
+"min-width: 80px;\n"
+"}\n"
+"\n"
+"#Mainwindow LoginButton:hover {\n"
+"background: qradialgradient(cx: 0.3, cy: -0.4,\n"
+"fx: 0.3, fy: -0.4,\n"
+"radius: 1.35, stop: 0 #fff, stop: 1 #bbb);\n"
+"}\n"
+"\n"
+"#Mainwindow LoginButton:pressed {\n"
+"background: qradialgradient(cx: 0.4, cy: -0.1,\n"
+"fx: 0.4, fy: -0.1,\n"
+"radius: 1.35, stop: 0 #fff, stop: 1 #ddd);\n"
+"}"));
         Info_Label = new QLabel(centralWidget);
         Info_Label->setObjectName(QStringLiteral("Info_Label"));
-        Info_Label->setGeometry(QRect(740, 510, 47, 31));
+        Info_Label->setGeometry(QRect(740, 510, 94, 31));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));

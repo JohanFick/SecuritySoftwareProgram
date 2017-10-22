@@ -11,6 +11,7 @@
 #include <fstream>
 #include <QInputDialog>
 #include <QDirIterator>
+#include <QPainter>
 
 
 using namespace std;
@@ -48,18 +49,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->MainText->setAttribute(Qt::WA_TranslucentBackground);
 
 
-    ui->LoginButton->setStyleSheet(" background-color: lightBlue ");
-    ui->AddUser_Button->setStyleSheet("QWidget { background-color: lightBlue; }");
+
     ui->UserName_LineEdit->setStyleSheet(" background-color: lightBlue ");
     ui->UserPassWord_LineEdit->setStyleSheet(" background-color: lightBlue ");
 
 
+
     ui->frame->setAttribute(Qt::WA_TranslucentBackground);
-    ui->frame->setWindowFlags(Qt::FramelessWindowHint);
-
-
-    QGraphicsBlurEffect *GuassianBlur = new QGraphicsBlurEffect;
-    GuassianBlur->setBlurRadius(8.0);
+   ui->frame->setWindowFlags(Qt::FramelessWindowHint);
 
 
 
