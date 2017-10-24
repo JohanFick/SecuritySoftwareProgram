@@ -26,6 +26,8 @@ SecondWindow::SecondWindow(QWidget *parent) :
     ui->Device_security->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->Incedent_View->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
+    setStyleSheet("background-image: url(:/Logo/Moutain.jpg)");
+
 
 }
 

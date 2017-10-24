@@ -99,19 +99,21 @@ radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
    <widget class="QLabel" name="MainText">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>70</y>
-      <width>561</width>
-      <height>51</height>
+      <x>380</x>
+      <y>0</y>
+      <width>741</width>
+      <height>71</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Javanese Text</family>
-      <pointsize>20</pointsize>
-      <weight>50</weight>
-      <italic>true</italic>
-      <bold>false</bold>
+      <family>Arial</family>
+      <pointsize>28</pointsize>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+      <underline>false</underline>
+      <stylestrategy>PreferDefault</stylestrategy>
      </font>
     </property>
     <property name="text">
@@ -121,8 +123,8 @@ radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
    <widget class="QLabel" name="AddUserLabel">
     <property name="geometry">
      <rect>
-      <x>1110</x>
-      <y>510</y>
+      <x>1160</x>
+      <y>540</y>
       <width>161</width>
       <height>71</height>
      </rect>
@@ -134,8 +136,8 @@ radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
    <widget class="QPushButton" name="AddUser_Button">
     <property name="geometry">
      <rect>
-      <x>1090</x>
-      <y>580</y>
+      <x>1140</x>
+      <y>610</y>
       <width>94</width>
       <height>31</height>
      </rect>
@@ -156,8 +158,8 @@ radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
    <widget class="QLabel" name="Info_Label">
     <property name="geometry">
      <rect>
-      <x>1190</x>
-      <y>580</y>
+      <x>1240</x>
+      <y>610</y>
       <width>94</width>
       <height>31</height>
      </rect>

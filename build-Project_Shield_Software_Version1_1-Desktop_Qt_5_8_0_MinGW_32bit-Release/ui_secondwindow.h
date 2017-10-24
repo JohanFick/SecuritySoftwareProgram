@@ -46,6 +46,10 @@ public:
         if (SecondWindow->objectName().isEmpty())
             SecondWindow->setObjectName(QStringLiteral("SecondWindow"));
         SecondWindow->resize(1336, 768);
+        SecondWindow->setStyleSheet(QLatin1String("QDialog{\n"
+"background-image: \"url(:/Logo/Background.jpg)\";\n"
+"\n"
+"}"));
         pushButton = new QPushButton(SecondWindow);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(280, 540, 75, 23));
