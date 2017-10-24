@@ -12,6 +12,7 @@
 #include <QInputDialog>
 #include <QDirIterator>
 #include <QPainter>
+#include <QHBoxLayout>
 
 
 using namespace std;
@@ -54,10 +55,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->UserPassWord_LineEdit->setStyleSheet(" background-color: lightBlue ");
 
 
+  //  ui->label_2->setStyleSheet("background-image: url(:/Logo/Transparent.png)");
 
-    ui->frame->setAttribute(Qt::WA_TranslucentBackground);
-   ui->frame->setWindowFlags(Qt::FramelessWindowHint);
 
+    showMaximized();
 
 
 

@@ -4,8 +4,11 @@
         <file>Logo/Logo_Small.png</file>
         <file>Logo/Logo_Small_2.png</file>
         <file>Logo/Background.jpg</file>
-        <file>Logo/Untitled.png</file>
         <file>Logo/AddPerson.png</file>
         <file>Logo/InfoBlueNew.png</file>
+        <file>Logo/LogoNew.png</file>
+        <file>Logo/water.png</file>
+        <file>Logo/grid.png</file>
+        <file>Logo/Untitled.png</file>
     </qresource>
 </RCC>
