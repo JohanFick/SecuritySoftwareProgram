@@ -243,29 +243,6 @@ radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
      <string>admin</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>170</y>
-      <width>301</width>
-      <height>261</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <zorder>label_2</zorder>
-   <zorder>label</zorder>
-   <zorder>Version_Text</zorder>
-   <zorder>MainText</zorder>
-   <zorder>AddUserLabel</zorder>
-   <zorder>AddUser_Button</zorder>
-   <zorder>Info_Label</zorder>
-   <zorder>LoginButton</zorder>
-   <zorder>UserPassWord_LineEdit</zorder>
-   <zorder>UserName_LineEdit</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

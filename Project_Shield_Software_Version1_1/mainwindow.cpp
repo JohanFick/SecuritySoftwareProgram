@@ -55,7 +55,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->UserPassWord_LineEdit->setStyleSheet(" background-color: lightBlue ");
 
 
-  //  ui->label_2->setStyleSheet("background-image: url(:/Logo/Transparent.png)");
+
 
 
     showMaximized();
