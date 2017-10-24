@@ -12,6 +12,7 @@ SecondWindow::SecondWindow(QWidget *parent) :
     this->hide();
     QPixmap *Logo = new QPixmap(":/Logo/Logo_Small_2.png");
 
+
     ui->label->setPixmap(*Logo);
     ui->label->setAttribute(Qt::WA_TranslucentBackground);
 
@@ -26,7 +27,7 @@ SecondWindow::SecondWindow(QWidget *parent) :
     ui->Device_security->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->Incedent_View->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
-    setStyleSheet("background-image: url(:/Logo/Moutain.jpg)");
+   setStyleSheet("background-image: url(:/Logo/Background.jpg)");
 
 
 }
