@@ -15,15 +15,16 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QDialog{
-background-image: &quot;url(:/Logo/Background.jpg)&quot;;
+background-image: url(&quot;:/Logo/grass.jpg&quot;);
+}
 
-}</string>
+</string>
   </property>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>540</y>
+     <x>530</x>
+     <y>480</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -35,8 +36,8 @@ background-image: &quot;url(:/Logo/Background.jpg)&quot;;
   <widget class="QLabel" name="MainText">
    <property name="geometry">
     <rect>
-     <x>470</x>
-     <y>50</y>
+     <x>530</x>
+     <y>80</y>
      <width>561</width>
      <height>31</height>
     </rect>
@@ -92,9 +93,9 @@ background-image: &quot;url(:/Logo/Background.jpg)&quot;;
   <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>230</y>
-     <width>931</width>
+     <x>530</x>
+     <y>140</y>
+     <width>691</width>
      <height>271</height>
     </rect>
    </property>
@@ -110,7 +111,7 @@ background-image: &quot;url(:/Logo/Background.jpg)&quot;;
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>1051</width>
+       <width>691</width>
        <height>251</height>
       </rect>
      </property>
@@ -125,8 +126,8 @@ background-image: &quot;url(:/Logo/Background.jpg)&quot;;
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>701</width>
-       <height>221</height>
+       <width>691</width>
+       <height>251</height>
       </rect>
      </property>
     </widget>
@@ -140,8 +141,8 @@ background-image: &quot;url(:/Logo/Background.jpg)&quot;;
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>701</width>
-       <height>201</height>
+       <width>691</width>
+       <height>251</height>
       </rect>
      </property>
     </widget>
@@ -155,8 +156,8 @@ background-image: &quot;url(:/Logo/Background.jpg)&quot;;
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>721</width>
-       <height>221</height>
+       <width>691</width>
+       <height>251</height>
       </rect>
      </property>
     </widget>
@@ -165,8 +166,8 @@ background-image: &quot;url(:/Logo/Background.jpg)&quot;;
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>380</x>
-     <y>540</y>
+     <x>630</x>
+     <y>480</y>
      <width>75</width>
      <height>23</height>
     </rect>

@@ -27,11 +27,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp\
         mainwindow.cpp \
     secondwindow.cpp \
-    mydatabase.cpp
+    mydatabase.cpp \
+    interfacehandler.cpp
 
 HEADERS  += mainwindow.h \
     secondwindow.h \
-    mydatabase.h
+    mydatabase.h \
+    interfacehandler.h
 
 FORMS    += mainwindow.ui \
     secondwindow.ui

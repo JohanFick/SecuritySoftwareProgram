@@ -14,10 +14,14 @@ public:
     explicit MyDatabase(QWidget *parent = 0);
     void connectDatabase();
     void databaseUpadte();
+    void determine_User_Information (QString UserID);
+
     QSqlTableModel *User_Info_model;
     QSqlTableModel *Device_Info_model;
     QSqlTableModel *Device_Security_model;
     QSqlTableModel *Incedent_Info_model;
+
+    QString Name,Surname,Town,Age,Sex,Contact_Number,Alternate_Number,Email_Adress,Street_adress;
 
 
 

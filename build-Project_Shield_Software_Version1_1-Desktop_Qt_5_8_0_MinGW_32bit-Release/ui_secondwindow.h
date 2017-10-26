@@ -47,15 +47,16 @@ public:
             SecondWindow->setObjectName(QStringLiteral("SecondWindow"));
         SecondWindow->resize(1336, 768);
         SecondWindow->setStyleSheet(QLatin1String("QDialog{\n"
-"background-image: \"url(:/Logo/Background.jpg)\";\n"
+"background-image: url(\":/Logo/grass.jpg\");\n"
+"}\n"
 "\n"
-"}"));
+""));
         pushButton = new QPushButton(SecondWindow);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(280, 540, 75, 23));
+        pushButton->setGeometry(QRect(530, 480, 75, 23));
         MainText = new QLabel(SecondWindow);
         MainText->setObjectName(QStringLiteral("MainText"));
-        MainText->setGeometry(QRect(470, 50, 561, 31));
+        MainText->setGeometry(QRect(530, 80, 561, 31));
         QFont font;
         font.setFamily(QStringLiteral("Javanese Text"));
         font.setPointSize(20);
@@ -78,34 +79,34 @@ public:
         label->setGeometry(QRect(10, 10, 191, 201));
         tabWidget = new QTabWidget(SecondWindow);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
-        tabWidget->setGeometry(QRect(260, 230, 931, 271));
+        tabWidget->setGeometry(QRect(530, 140, 691, 271));
         User_Info = new QWidget();
         User_Info->setObjectName(QStringLiteral("User_Info"));
         tableView = new QTableView(User_Info);
         tableView->setObjectName(QStringLiteral("tableView"));
-        tableView->setGeometry(QRect(0, 0, 1051, 251));
+        tableView->setGeometry(QRect(0, 0, 691, 251));
         tabWidget->addTab(User_Info, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
         Device_view = new QTableView(tab_2);
         Device_view->setObjectName(QStringLiteral("Device_view"));
-        Device_view->setGeometry(QRect(0, 0, 701, 221));
+        Device_view->setGeometry(QRect(0, 0, 691, 251));
         tabWidget->addTab(tab_2, QString());
         tab = new QWidget();
         tab->setObjectName(QStringLiteral("tab"));
         Device_security = new QTableView(tab);
         Device_security->setObjectName(QStringLiteral("Device_security"));
-        Device_security->setGeometry(QRect(0, 0, 701, 201));
+        Device_security->setGeometry(QRect(0, 0, 691, 251));
         tabWidget->addTab(tab, QString());
         tab_3 = new QWidget();
         tab_3->setObjectName(QStringLiteral("tab_3"));
         Incedent_View = new QTableView(tab_3);
         Incedent_View->setObjectName(QStringLiteral("Incedent_View"));
-        Incedent_View->setGeometry(QRect(0, 0, 721, 221));
+        Incedent_View->setGeometry(QRect(0, 0, 691, 251));
         tabWidget->addTab(tab_3, QString());
         pushButton_2 = new QPushButton(SecondWindow);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(380, 540, 75, 23));
+        pushButton_2->setGeometry(QRect(630, 480, 75, 23));
 
         retranslateUi(SecondWindow);
 

@@ -10,5 +10,8 @@
         <file>Logo/water.png</file>
         <file>Logo/grid.png</file>
         <file>Logo/Untitled.png</file>
+        <file>Logo/ocean.jpg</file>
+        <file>Logo/clouds.jpg</file>
+        <file>Logo/grass.jpg</file>
     </qresource>
 </RCC>
