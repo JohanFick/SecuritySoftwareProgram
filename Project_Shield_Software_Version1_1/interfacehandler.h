@@ -9,7 +9,11 @@ public:
     InterfaceHandler();
    void Exctract_Data_From_The_String();
    int  Determine_The_Situation();
-   void Determine_Person_Specific_Information();
+   QString Determine_Person_Specific_Information();
+   void Extract_Data_From_User_String();
+
+   QString UserSpecificInfo;
+
 
 
 private:

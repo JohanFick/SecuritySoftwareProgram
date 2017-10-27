@@ -2,13 +2,15 @@
 #include <stdio.h>
 #include <QDebug>
 #include <mydatabase.h>
+#include <QMessageBox>
+#include <QTime>
 
 using namespace std;
 
 
 InterfaceHandler::InterfaceHandler()
 {
-    String_From_The_PI = "1,1,1,1,1,1,20/10/2017,8:06,0";
+    String_From_The_PI = "2,1,1,1,0,0,20/10/2017,8:06,0";
 
 }
 
@@ -82,12 +84,16 @@ int InterfaceHandler::Determine_The_Situation()
 {
     int Protocol_Type = 0;
 
-    if(Distress_Status.toInt(nullptr,10) == 1)
+    QTime time;
+
+
+
+    if((Alarm_status.toInt(nullptr,10) == 1))
     {
         Protocol_Type = 1;
     }
 
-    if(Alarm_status.toInt(nullptr,10) == 1)
+    if((Distress_Status.toInt(nullptr,10) == 1) && (Alarm_status.toInt(nullptr,10) == 0))
     {
         Protocol_Type = 2;
     }
@@ -102,11 +108,22 @@ int InterfaceHandler::Determine_The_Situation()
 
 }
 
-void InterfaceHandler::Determine_Person_Specific_Information()
+QString InterfaceHandler::Determine_Person_Specific_Information()
 {
     MyDatabase db;
 
-    db.determine_User_Information(User_ID);
+   UserSpecificInfo = db.determine_User_Information(User_ID);
+
+   qDebug() << " The current strinf is: " << UserSpecificInfo;
+
+   return UserSpecificInfo;
+
+}
+
+void InterfaceHandler::Extract_Data_From_User_String()
+{
+
 
 
 }
+

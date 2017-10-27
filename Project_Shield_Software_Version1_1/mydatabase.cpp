@@ -1,5 +1,6 @@
 #include "mydatabase.h"
-
+#include <QMessageBox>
+#include <interfacehandler.h>
 
 MyDatabase::MyDatabase(QWidget *parent) : QMainWindow(parent)
 {
@@ -75,49 +76,71 @@ void MyDatabase::databaseUpadte()
 
 }
 
-void MyDatabase::determine_User_Information(QString UserID)
+QString MyDatabase::determine_User_Information(QString UserID)
 {
 
-     QSqlQuery *query = new QSqlQuery(DB);
+            QSqlQuery query(DB);
 
 
-            query->prepare("SELECT Name,Surname,HomeTown,Age,Sex,ContcatNumber,AlternateNumber,EmailAdress,StreetAdress FROM userinfo WHERE UserID = :UserID");
-            query->bindValue(":UserID",UserID,QSql::Out);
+             QVariant Variant_ID = UserID.toInt(nullptr,10);
+
+             QString qsqlString = "SELECT Name,Surname,HomeTown,Age,Sex,ContcatNumber,AlternateNumber,EmailAdress,StreetAdress FROM userinfo WHERE UserID =";
+
+             qsqlString.append(UserID);
+             query.exec(qsqlString);
+             query.exec();
+             query.first();
 
 
+            Name = query.value(0).toString();
+            Surname = query.value(1).toString();
+            Town = query.value(2).toString();
+            Age = query.value(3).toString();
+            Sex = query.value(4).toString();
+            Contact_Number = query.value(5).toString();
+            Alternate_Number = query.value(6).toString();
+            Email_Adress = query.value(7).toString();
+            Street_adress = query.value(8).toString();
 
-            query->exec();
-            qDebug() << "Last query error : " << query->lastError();
-            qDebug() << "Details from UserID fine";
-            query->first();
+            QString string;
+
+            string.append(Name);
+            string.append(",");
+            string.append(Surname);
+            string.append(",");
+            string.append(Town);
+            string.append(",");
+            string.append(Age);
+            string.append(",");
+            string.append(Sex);
+            string.append(",");
+            string.append(Contact_Number);
+            string.append(",");
+            string.append(Alternate_Number);
+            string.append(",");
+            string.append(Email_Adress);
+            string.append(",");
+            string.append(Street_adress);
 
 
+        return string;
 
-            Name = query->value(0).toString();
-            Surname = query->value(1).toString();
-            Town = query->value(2).toString();
-            Age = query->value(3).toString();
-            Sex = query->value(4).toString();
-            Contact_Number = query->value(5).toString();
-            Alternate_Number = query->value(6).toString();
-            Email_Adress = query->value(7).toString();
-            Street_adress = query->value(8).toString();
+}
 
-            qDebug() << endl<< Name;
-            qDebug() << endl<< Surname;
-            qDebug() << endl<< Town;
-            qDebug() << endl<< Age;
-            qDebug() << endl<< Sex;
-            qDebug() << endl<< Contact_Number;
-            qDebug() << endl<< Alternate_Number;
-            qDebug() << endl<< Email_Adress;
-            qDebug() << endl<< Street_adress;
+void MyDatabase::logEvent()
+{
 
-          //  }
-          //  else
-           // {
-                qDebug() << endl <<" There is no valid user with the DeviceID";
-          //  }
+    QSqlQuery *query = new QSqlQuery(DB);
+
+    QString qsqlValues;
+    InterfaceHandler Handler;
+
+    //qsqlValues.append("(Null"+","+Handler.Device_ID+","+Handler.Sensor_Type+","+Handler.Date+","+Handler.Time+")");
+
+    query->exec("INSERT into incedentlog(IncidentNumber,DeviceID,SensorType,IncedentDate,IncedentTime) VALUES (0,1,2,'2017-10-26','10:00')");
+
+    qDebug() << query->lastError().text() ;
 
 
 }
+

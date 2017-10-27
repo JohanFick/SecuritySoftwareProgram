@@ -14,7 +14,11 @@ public:
     explicit MyDatabase(QWidget *parent = 0);
     void connectDatabase();
     void databaseUpadte();
-    void determine_User_Information (QString UserID);
+    QString determine_User_Information (QString UserID);
+    void logEvent();
+
+
+
 
     QSqlTableModel *User_Info_model;
     QSqlTableModel *Device_Info_model;

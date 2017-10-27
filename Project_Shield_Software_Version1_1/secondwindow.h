@@ -20,6 +20,8 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_ButtonDone_clicked();
+
 private:
     Ui::SecondWindow *ui;
 };

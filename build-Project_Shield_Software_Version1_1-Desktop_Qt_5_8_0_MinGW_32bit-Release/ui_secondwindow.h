@@ -14,11 +14,13 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableView>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -40,6 +42,22 @@ public:
     QWidget *tab_3;
     QTableView *Incedent_View;
     QPushButton *pushButton_2;
+    QFrame *frame;
+    QLabel *labeInstructions;
+    QLabel *labelInstructionstext;
+    QPushButton *ButtonDone;
+    QWidget *widget;
+    QVBoxLayout *verticalLayout;
+    QLabel *labelTitle;
+    QLabel *labelName;
+    QLabel *labelSurname;
+    QLabel *labelTown;
+    QLabel *labelStreetAdress;
+    QLabel *labelAge;
+    QLabel *labelSex;
+    QLabel *labelContactNumber;
+    QLabel *labelAlternateNumber;
+    QLabel *labelEmalAdress;
 
     void setupUi(QDialog *SecondWindow)
     {
@@ -50,7 +68,10 @@ public:
 "background-image: url(\":/Logo/grass.jpg\");\n"
 "}\n"
 "\n"
-""));
+"QLabel{\n"
+"\n"
+"\n"
+"}"));
         pushButton = new QPushButton(SecondWindow);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(530, 480, 75, 23));
@@ -107,6 +128,100 @@ public:
         pushButton_2 = new QPushButton(SecondWindow);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
         pushButton_2->setGeometry(QRect(630, 480, 75, 23));
+        frame = new QFrame(SecondWindow);
+        frame->setObjectName(QStringLiteral("frame"));
+        frame->setGeometry(QRect(80, 140, 411, 411));
+        frame->setFrameShape(QFrame::StyledPanel);
+        frame->setFrameShadow(QFrame::Raised);
+        labeInstructions = new QLabel(frame);
+        labeInstructions->setObjectName(QStringLiteral("labeInstructions"));
+        labeInstructions->setGeometry(QRect(10, 230, 111, 21));
+        QFont font2;
+        font2.setPointSize(12);
+        font2.setBold(true);
+        font2.setItalic(false);
+        font2.setUnderline(true);
+        font2.setWeight(75);
+        labeInstructions->setFont(font2);
+        labelInstructionstext = new QLabel(frame);
+        labelInstructionstext->setObjectName(QStringLiteral("labelInstructionstext"));
+        labelInstructionstext->setGeometry(QRect(0, 260, 381, 101));
+        QFont font3;
+        font3.setPointSize(10);
+        labelInstructionstext->setFont(font3);
+        ButtonDone = new QPushButton(frame);
+        ButtonDone->setObjectName(QStringLiteral("ButtonDone"));
+        ButtonDone->setGeometry(QRect(150, 380, 75, 23));
+        widget = new QWidget(frame);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(10, 0, 459, 219));
+        verticalLayout = new QVBoxLayout(widget);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        labelTitle = new QLabel(widget);
+        labelTitle->setObjectName(QStringLiteral("labelTitle"));
+        QFont font4;
+        font4.setPointSize(12);
+        font4.setBold(true);
+        font4.setWeight(75);
+        labelTitle->setFont(font4);
+
+        verticalLayout->addWidget(labelTitle);
+
+        labelName = new QLabel(widget);
+        labelName->setObjectName(QStringLiteral("labelName"));
+        labelName->setFont(font3);
+
+        verticalLayout->addWidget(labelName);
+
+        labelSurname = new QLabel(widget);
+        labelSurname->setObjectName(QStringLiteral("labelSurname"));
+        labelSurname->setFont(font3);
+
+        verticalLayout->addWidget(labelSurname);
+
+        labelTown = new QLabel(widget);
+        labelTown->setObjectName(QStringLiteral("labelTown"));
+        labelTown->setFont(font3);
+
+        verticalLayout->addWidget(labelTown);
+
+        labelStreetAdress = new QLabel(widget);
+        labelStreetAdress->setObjectName(QStringLiteral("labelStreetAdress"));
+        labelStreetAdress->setFont(font3);
+
+        verticalLayout->addWidget(labelStreetAdress);
+
+        labelAge = new QLabel(widget);
+        labelAge->setObjectName(QStringLiteral("labelAge"));
+        labelAge->setFont(font3);
+
+        verticalLayout->addWidget(labelAge);
+
+        labelSex = new QLabel(widget);
+        labelSex->setObjectName(QStringLiteral("labelSex"));
+        labelSex->setFont(font3);
+
+        verticalLayout->addWidget(labelSex);
+
+        labelContactNumber = new QLabel(widget);
+        labelContactNumber->setObjectName(QStringLiteral("labelContactNumber"));
+        labelContactNumber->setFont(font3);
+
+        verticalLayout->addWidget(labelContactNumber);
+
+        labelAlternateNumber = new QLabel(widget);
+        labelAlternateNumber->setObjectName(QStringLiteral("labelAlternateNumber"));
+        labelAlternateNumber->setFont(font3);
+
+        verticalLayout->addWidget(labelAlternateNumber);
+
+        labelEmalAdress = new QLabel(widget);
+        labelEmalAdress->setObjectName(QStringLiteral("labelEmalAdress"));
+        labelEmalAdress->setFont(font3);
+
+        verticalLayout->addWidget(labelEmalAdress);
+
 
         retranslateUi(SecondWindow);
 
@@ -128,6 +243,19 @@ public:
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("SecondWindow", "Device_Security", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("SecondWindow", "Incident_Log", Q_NULLPTR));
         pushButton_2->setText(QApplication::translate("SecondWindow", "PushButton", Q_NULLPTR));
+        labeInstructions->setText(QApplication::translate("SecondWindow", "Instructions", Q_NULLPTR));
+        labelInstructionstext->setText(QString());
+        ButtonDone->setText(QApplication::translate("SecondWindow", "Done", Q_NULLPTR));
+        labelTitle->setText(QApplication::translate("SecondWindow", "                   EMERGENCY INFORMATION", Q_NULLPTR));
+        labelName->setText(QString());
+        labelSurname->setText(QString());
+        labelTown->setText(QString());
+        labelStreetAdress->setText(QString());
+        labelAge->setText(QString());
+        labelSex->setText(QString());
+        labelContactNumber->setText(QString());
+        labelAlternateNumber->setText(QString());
+        labelEmalAdress->setText(QString());
     } // retranslateUi
 
 };

@@ -2,6 +2,7 @@
 #include "ui_secondwindow.h"
 #include <mydatabase.h>
 #include <interfacehandler.h>
+#include <QMessageBox>
 
 SecondWindow::SecondWindow(QWidget *parent) :
     QDialog(parent),
@@ -28,32 +29,19 @@ SecondWindow::SecondWindow(QWidget *parent) :
     ui->Device_security->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->Incedent_View->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
-//    ui->tableView->setStyleSheet(QString::fromUtf8("QScrollBar:vertical {"
-//                                                   "    border: 1px solid #999999;"
-//                                                   "    background:white;"
-//                                                   "    width:10px;    "
-//                                                   "    margin: 0px 0px 0px 0px;"
-//                                                   "}"
-//                                                   "QScrollBar::handle:vertical {"
-//                                                   "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,"
-//                                                   "    stop: 0 rgb(32, 47, 130), stop: 0.5 rgb(32, 47, 130), stop:1 rgb(32, 47, 130));"
-//                                                   "    min-height: 0px;"
-//                                                   "}"
-//                                                   "QScrollBar::add-line:vertical {"
-//                                                   "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,"
-//                                                   "    stop: 0 rgb(32, 47, 130), stop: 0.5 rgb(32, 47, 130),  stop:1 rgb(32, 47, 130));"
-//                                                   "    height: 0px;"
-//                                                   "    subcontrol-position: bottom;"
-//                                                   "    subcontrol-origin: margin;"
-//                                                   "}"
-//                                                   "QScrollBar::sub-line:vertical {"
-//                                                   "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,"
-//                                                   "    stop: 0  rgb(32, 47, 130), stop: 0.5 rgb(32, 47, 130),  stop:1 rgb(32, 47, 130));"
-//                                                   "    height: 0 px;"
-//                                                   "    subcontrol-position: top;"
-//                                                   "    subcontrol-origin: margin;"
-//                                                   "}"
-//                                                   ));
+    ui->frame->setStyleSheet("background-image: url(:/Logo/paper.jpg)");
+
+    ui->labelName->setAttribute(Qt::WA_TranslucentBackground);
+    ui->labelSurname->setAttribute(Qt::WA_TranslucentBackground);
+    ui->labelTown->setAttribute(Qt::WA_TranslucentBackground);
+    ui->labelAge->setAttribute(Qt::WA_TranslucentBackground);
+    ui->labelSex->setAttribute(Qt::WA_TranslucentBackground);
+    ui->labelContactNumber->setAttribute(Qt::WA_TranslucentBackground);
+    ui->labelAlternateNumber->setAttribute(Qt::WA_TranslucentBackground);
+    ui->labelEmalAdress->setAttribute(Qt::WA_TranslucentBackground);
+    ui->labelStreetAdress->setAttribute(Qt::WA_TranslucentBackground);
+
+    ui->frame->hide();
 
 
 
@@ -92,7 +80,7 @@ void SecondWindow::on_pushButton_clicked()
 void SecondWindow::on_pushButton_2_clicked()
 {
 
-    //MyDatabase db;
+    MyDatabase db;
 
    // db.databaseUpadte();
 
@@ -100,8 +88,122 @@ void SecondWindow::on_pushButton_2_clicked()
 
     Handler.Exctract_Data_From_The_String();
 
-    qDebug() << endl << "Situation_Type == " << Handler.Determine_The_Situation();
+    //qDebug() << endl << "Situation_Type == " <<
 
-    Handler.Determine_Person_Specific_Information();
+    QString UserSpecificInfo;
 
+    UserSpecificInfo = Handler.Determine_Person_Specific_Information();
+
+    QString Name,Surname,Town,Age,Sex,Contact_Number,Alternate_Number,Email_Adress,Street_adress;
+
+    int pos;
+
+    pos = UserSpecificInfo.indexOf(',',0);
+    Name = UserSpecificInfo.left(pos);
+
+    UserSpecificInfo.remove(0,pos+1);
+
+    pos = UserSpecificInfo.indexOf(',',0);
+    Surname = UserSpecificInfo.left(pos);
+
+    UserSpecificInfo.remove(0,pos+1);
+
+    pos = UserSpecificInfo.indexOf(',',0);
+    Town = UserSpecificInfo.left(pos);
+
+    UserSpecificInfo.remove(0,pos+1);
+
+    pos = UserSpecificInfo.indexOf(',',0);
+    Age = UserSpecificInfo.left(pos);
+
+    UserSpecificInfo.remove(0,pos+1);
+
+    pos = UserSpecificInfo.indexOf(',',0);
+    Sex = UserSpecificInfo.left(pos);
+
+    UserSpecificInfo.remove(0,pos+1);
+
+    pos = UserSpecificInfo.indexOf(',',0);
+    Contact_Number = UserSpecificInfo.left(pos);
+
+    UserSpecificInfo.remove(0,pos+1);
+
+    pos = UserSpecificInfo.indexOf(',',0);
+    Alternate_Number = UserSpecificInfo.left(pos);
+
+    UserSpecificInfo.remove(0,pos+1);
+
+    pos = UserSpecificInfo.indexOf(',',0);
+    Email_Adress = UserSpecificInfo.left(pos);
+
+    UserSpecificInfo.remove(0,pos+1);
+
+    pos = UserSpecificInfo.indexOf(',',0);
+    Street_adress = UserSpecificInfo.left(pos);
+
+
+    ui->labelName->setText("Name: "+Name);
+    ui->labelSurname->setText("Surname: "+ Surname);
+    ui->labelTown->setText("Town: "+Town);
+    ui->labelAge->setText("Age: "+Age);
+    ui->labelSex->setText("Sex: "+Sex);
+    ui->labelContactNumber->setText("ContactNumber: "+Contact_Number);
+    ui->labelAlternateNumber->setText("AlternateNumber: "+ Alternate_Number);
+    ui->labelEmalAdress->setText("EmailAdress: "+Email_Adress);
+    ui->labelStreetAdress->setText("StreeetAdress: "+ Street_adress);
+
+    QString ProtocolString = " ";
+
+    switch (Handler.Determine_The_Situation()) {
+    case 1:
+
+        ProtocolString.append("Low Risk - Send email to: "+Email_Adress+"\n");
+        ProtocolString.append("Call "+Name+":"+Contact_Number+"\n"+"If person doesn't respond Call alternative :"+Alternate_Number+"\n");
+
+        ui->labelInstructionstext->setText(ProtocolString);
+        ui->labelInstructionstext->adjustSize();
+
+        ui->frame->show();
+
+
+        break;
+    case 2:
+
+        ProtocolString.append("Meduim Risk - Call "+Name+":"+Contact_Number+"\n"+"If person doesn't respond Call alternative :"+Alternate_Number+"\n");
+        ProtocolString.append("If no answer Dispatch a unit to...\n" +Town+","+Street_adress+"\n");
+        ProtocolString.append("Send email to: "+Email_Adress);
+
+        ui->labelInstructionstext->setText(ProtocolString);
+        ui->labelInstructionstext->adjustSize();
+
+
+        ui->frame->show();
+
+
+        break;
+
+    case 3:
+
+        ProtocolString.append("High Risk - Dispatch a unit to...\n" +Town+","+Street_adress+"\n");
+        ProtocolString.append("Call "+Name+":"+Contact_Number+"\n"+"If person doesn't respond Call alternative :"+Alternate_Number+"\n");
+        ProtocolString.append("Send email to: "+Email_Adress);
+
+        ui->labelInstructionstext->setText(ProtocolString);
+        ui->labelInstructionstext->adjustSize();
+
+
+        ui->frame->show();
+
+        break;
+    }
+
+
+}
+
+void SecondWindow::on_ButtonDone_clicked()
+{
+    MyDatabase db;
+
+    db.logEvent();
+    ui->frame->hide();
 }
