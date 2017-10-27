@@ -10,7 +10,7 @@ using namespace std;
 
 InterfaceHandler::InterfaceHandler()
 {
-    String_From_The_PI = "2,1,1,1,0,0,20/10/2017,8:06,0";
+    String_From_The_PI = "1,1,0,1,1,1,2017-10-26,08:06:00,0";
 
 }
 
@@ -63,8 +63,6 @@ void InterfaceHandler::Exctract_Data_From_The_String()
 
     String_From_The_PI.remove(0,pos+1);
 
-
-
     qDebug() << endl << "Name = " << User_ID;
     qDebug() << endl << "Device_ID = " << Device_ID;
     qDebug() << endl << "Connection_Status = " << Connection_Status;
@@ -74,7 +72,6 @@ void InterfaceHandler::Exctract_Data_From_The_String()
     qDebug() << endl << "Date = " << Date;
     qDebug() << endl << "Time = " << Time;
     qDebug() << endl << "Sensor_Type = " << Sensor_Type;
-
     qDebug() << endl << "String = " << String_From_The_PI;
 
 
@@ -126,4 +123,6 @@ void InterfaceHandler::Extract_Data_From_User_String()
 
 
 }
+
+
 

@@ -6,6 +6,7 @@
 #include <QDebug>
 #include <QString>
 #include <QSqlQuery>
+#include <interfacehandler.h>
 
 class MyDatabase : public QMainWindow
 {
@@ -15,7 +16,10 @@ public:
     void connectDatabase();
     void databaseUpadte();
     QString determine_User_Information (QString UserID);
+    void ExtractDataFromString();
     void logEvent();
+    void UpdateDeviceInfo();
+
 
 
 
@@ -26,7 +30,8 @@ public:
     QSqlTableModel *Incedent_Info_model;
 
     QString Name,Surname,Town,Age,Sex,Contact_Number,Alternate_Number,Email_Adress,Street_adress;
-
+    QString User_ID,Device_ID,Connection_Status,Device_Status,Distress_Status,Alarm_status,Date,Time,Sensor_Type;
+    QString String_From_The_PI;
 
 
 private:

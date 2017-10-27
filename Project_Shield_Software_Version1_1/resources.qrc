@@ -14,5 +14,6 @@
         <file>Logo/clouds.jpg</file>
         <file>Logo/grass.jpg</file>
         <file>Logo/paper.jpg</file>
+        <file>Logo/addUser.jpg</file>
     </qresource>
 </RCC>

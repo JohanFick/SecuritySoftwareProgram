@@ -15,8 +15,10 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QFrame>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableView>
@@ -58,6 +60,39 @@ public:
     QLabel *labelContactNumber;
     QLabel *labelAlternateNumber;
     QLabel *labelEmalAdress;
+    QPushButton *AddCustomerButton;
+    QFrame *AddCustomerFrame;
+    QWidget *widget1;
+    QVBoxLayout *verticalLayout_3;
+    QLabel *labelAddUser;
+    QVBoxLayout *verticalLayout_2;
+    QHBoxLayout *horizontalLayout;
+    QLabel *labelAddName;
+    QLineEdit *textEditName;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *labelAddSurname;
+    QLineEdit *textEditSurname;
+    QHBoxLayout *horizontalLayout_3;
+    QLabel *labelAddTown;
+    QLineEdit *textEditTown;
+    QHBoxLayout *horizontalLayout_4;
+    QLabel *labelAddStreetAddress;
+    QLineEdit *textEditStreetAddress;
+    QHBoxLayout *horizontalLayout_5;
+    QLabel *labelAddAge;
+    QLineEdit *textEditAge;
+    QHBoxLayout *horizontalLayout_6;
+    QLabel *labelAddSex;
+    QLineEdit *textEditSex;
+    QHBoxLayout *horizontalLayout_7;
+    QLabel *labelAddContactNumber;
+    QLineEdit *textEditContactNumber;
+    QHBoxLayout *horizontalLayout_8;
+    QLabel *labelAddAlternateNumber;
+    QLineEdit *textEditAlterNumber;
+    QHBoxLayout *horizontalLayout_9;
+    QLabel *labelAddEmailAdress;
+    QLineEdit *textEditEmailAddress;
 
     void setupUi(QDialog *SecondWindow)
     {
@@ -74,10 +109,10 @@ public:
 "}"));
         pushButton = new QPushButton(SecondWindow);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(530, 480, 75, 23));
+        pushButton->setGeometry(QRect(530, 480, 91, 31));
         MainText = new QLabel(SecondWindow);
         MainText->setObjectName(QStringLiteral("MainText"));
-        MainText->setGeometry(QRect(530, 80, 561, 31));
+        MainText->setGeometry(QRect(510, 30, 561, 31));
         QFont font;
         font.setFamily(QStringLiteral("Javanese Text"));
         font.setPointSize(20);
@@ -100,7 +135,7 @@ public:
         label->setGeometry(QRect(10, 10, 191, 201));
         tabWidget = new QTabWidget(SecondWindow);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
-        tabWidget->setGeometry(QRect(530, 140, 691, 271));
+        tabWidget->setGeometry(QRect(510, 110, 691, 271));
         User_Info = new QWidget();
         User_Info->setObjectName(QStringLiteral("User_Info"));
         tableView = new QTableView(User_Info);
@@ -127,10 +162,10 @@ public:
         tabWidget->addTab(tab_3, QString());
         pushButton_2 = new QPushButton(SecondWindow);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(630, 480, 75, 23));
+        pushButton_2->setGeometry(QRect(630, 480, 91, 31));
         frame = new QFrame(SecondWindow);
         frame->setObjectName(QStringLiteral("frame"));
-        frame->setGeometry(QRect(80, 140, 411, 411));
+        frame->setGeometry(QRect(80, 170, 411, 411));
         frame->setFrameShape(QFrame::StyledPanel);
         frame->setFrameShadow(QFrame::Raised);
         labeInstructions = new QLabel(frame);
@@ -222,6 +257,193 @@ public:
 
         verticalLayout->addWidget(labelEmalAdress);
 
+        AddCustomerButton = new QPushButton(SecondWindow);
+        AddCustomerButton->setObjectName(QStringLiteral("AddCustomerButton"));
+        AddCustomerButton->setGeometry(QRect(740, 480, 101, 31));
+        AddCustomerFrame = new QFrame(SecondWindow);
+        AddCustomerFrame->setObjectName(QStringLiteral("AddCustomerFrame"));
+        AddCustomerFrame->setGeometry(QRect(480, 120, 471, 301));
+        AddCustomerFrame->setFrameShape(QFrame::StyledPanel);
+        AddCustomerFrame->setFrameShadow(QFrame::Raised);
+        widget1 = new QWidget(AddCustomerFrame);
+        widget1->setObjectName(QStringLiteral("widget1"));
+        widget1->setGeometry(QRect(90, 10, 231, 272));
+        verticalLayout_3 = new QVBoxLayout(widget1);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        verticalLayout_3->setContentsMargins(0, 0, 0, 0);
+        labelAddUser = new QLabel(widget1);
+        labelAddUser->setObjectName(QStringLiteral("labelAddUser"));
+        QFont font5;
+        font5.setPointSize(10);
+        font5.setBold(true);
+        font5.setWeight(75);
+        labelAddUser->setFont(font5);
+
+        verticalLayout_3->addWidget(labelAddUser);
+
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        labelAddName = new QLabel(widget1);
+        labelAddName->setObjectName(QStringLiteral("labelAddName"));
+        QFont font6;
+        font6.setBold(true);
+        font6.setWeight(75);
+        labelAddName->setFont(font6);
+
+        horizontalLayout->addWidget(labelAddName);
+
+        textEditName = new QLineEdit(widget1);
+        textEditName->setObjectName(QStringLiteral("textEditName"));
+
+        horizontalLayout->addWidget(textEditName);
+
+
+        verticalLayout_2->addLayout(horizontalLayout);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        labelAddSurname = new QLabel(widget1);
+        labelAddSurname->setObjectName(QStringLiteral("labelAddSurname"));
+        labelAddSurname->setFont(font6);
+
+        horizontalLayout_2->addWidget(labelAddSurname);
+
+        textEditSurname = new QLineEdit(widget1);
+        textEditSurname->setObjectName(QStringLiteral("textEditSurname"));
+
+        horizontalLayout_2->addWidget(textEditSurname);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_2);
+
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        labelAddTown = new QLabel(widget1);
+        labelAddTown->setObjectName(QStringLiteral("labelAddTown"));
+        labelAddTown->setFont(font6);
+
+        horizontalLayout_3->addWidget(labelAddTown);
+
+        textEditTown = new QLineEdit(widget1);
+        textEditTown->setObjectName(QStringLiteral("textEditTown"));
+
+        horizontalLayout_3->addWidget(textEditTown);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_3);
+
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
+        labelAddStreetAddress = new QLabel(widget1);
+        labelAddStreetAddress->setObjectName(QStringLiteral("labelAddStreetAddress"));
+        labelAddStreetAddress->setFont(font6);
+
+        horizontalLayout_4->addWidget(labelAddStreetAddress);
+
+        textEditStreetAddress = new QLineEdit(widget1);
+        textEditStreetAddress->setObjectName(QStringLiteral("textEditStreetAddress"));
+
+        horizontalLayout_4->addWidget(textEditStreetAddress);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_4);
+
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        labelAddAge = new QLabel(widget1);
+        labelAddAge->setObjectName(QStringLiteral("labelAddAge"));
+        labelAddAge->setFont(font6);
+
+        horizontalLayout_5->addWidget(labelAddAge);
+
+        textEditAge = new QLineEdit(widget1);
+        textEditAge->setObjectName(QStringLiteral("textEditAge"));
+
+        horizontalLayout_5->addWidget(textEditAge);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_5);
+
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
+        labelAddSex = new QLabel(widget1);
+        labelAddSex->setObjectName(QStringLiteral("labelAddSex"));
+        labelAddSex->setFont(font6);
+
+        horizontalLayout_6->addWidget(labelAddSex);
+
+        textEditSex = new QLineEdit(widget1);
+        textEditSex->setObjectName(QStringLiteral("textEditSex"));
+
+        horizontalLayout_6->addWidget(textEditSex);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_6);
+
+        horizontalLayout_7 = new QHBoxLayout();
+        horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
+        labelAddContactNumber = new QLabel(widget1);
+        labelAddContactNumber->setObjectName(QStringLiteral("labelAddContactNumber"));
+        labelAddContactNumber->setFont(font6);
+
+        horizontalLayout_7->addWidget(labelAddContactNumber);
+
+        textEditContactNumber = new QLineEdit(widget1);
+        textEditContactNumber->setObjectName(QStringLiteral("textEditContactNumber"));
+
+        horizontalLayout_7->addWidget(textEditContactNumber);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_7);
+
+        horizontalLayout_8 = new QHBoxLayout();
+        horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
+        labelAddAlternateNumber = new QLabel(widget1);
+        labelAddAlternateNumber->setObjectName(QStringLiteral("labelAddAlternateNumber"));
+        labelAddAlternateNumber->setFont(font6);
+
+        horizontalLayout_8->addWidget(labelAddAlternateNumber);
+
+        textEditAlterNumber = new QLineEdit(widget1);
+        textEditAlterNumber->setObjectName(QStringLiteral("textEditAlterNumber"));
+
+        horizontalLayout_8->addWidget(textEditAlterNumber);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_8);
+
+        horizontalLayout_9 = new QHBoxLayout();
+        horizontalLayout_9->setObjectName(QStringLiteral("horizontalLayout_9"));
+        labelAddEmailAdress = new QLabel(widget1);
+        labelAddEmailAdress->setObjectName(QStringLiteral("labelAddEmailAdress"));
+        labelAddEmailAdress->setFont(font6);
+
+        horizontalLayout_9->addWidget(labelAddEmailAdress);
+
+        textEditEmailAddress = new QLineEdit(widget1);
+        textEditEmailAddress->setObjectName(QStringLiteral("textEditEmailAddress"));
+
+        horizontalLayout_9->addWidget(textEditEmailAddress);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_9);
+
+
+        verticalLayout_3->addLayout(verticalLayout_2);
+
+        pushButton->raise();
+        MainText->raise();
+        Version_Text->raise();
+        label->raise();
+        tabWidget->raise();
+        pushButton_2->raise();
+        frame->raise();
+        AddCustomerButton->raise();
+        Device_security->raise();
+        labelAddUser->raise();
+        AddCustomerFrame->raise();
 
         retranslateUi(SecondWindow);
 
@@ -242,7 +464,7 @@ public:
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("SecondWindow", "Device_Info", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("SecondWindow", "Device_Security", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("SecondWindow", "Incident_Log", Q_NULLPTR));
-        pushButton_2->setText(QApplication::translate("SecondWindow", "PushButton", Q_NULLPTR));
+        pushButton_2->setText(QApplication::translate("SecondWindow", "DetermineEvent", Q_NULLPTR));
         labeInstructions->setText(QApplication::translate("SecondWindow", "Instructions", Q_NULLPTR));
         labelInstructionstext->setText(QString());
         ButtonDone->setText(QApplication::translate("SecondWindow", "Done", Q_NULLPTR));
@@ -256,6 +478,20 @@ public:
         labelContactNumber->setText(QString());
         labelAlternateNumber->setText(QString());
         labelEmalAdress->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        AddCustomerButton->setToolTip(QApplication::translate("SecondWindow", "<html><head/><body><p>This allows the admin to add a user to the database.</p></body></html>", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
+        AddCustomerButton->setText(QApplication::translate("SecondWindow", "AddCustomer", Q_NULLPTR));
+        labelAddUser->setText(QApplication::translate("SecondWindow", "USER INFORMATION", Q_NULLPTR));
+        labelAddName->setText(QApplication::translate("SecondWindow", "Name:", Q_NULLPTR));
+        labelAddSurname->setText(QApplication::translate("SecondWindow", "Surname:", Q_NULLPTR));
+        labelAddTown->setText(QApplication::translate("SecondWindow", "Town:", Q_NULLPTR));
+        labelAddStreetAddress->setText(QApplication::translate("SecondWindow", "StreetAddress:", Q_NULLPTR));
+        labelAddAge->setText(QApplication::translate("SecondWindow", "Age:", Q_NULLPTR));
+        labelAddSex->setText(QApplication::translate("SecondWindow", "Sex:(m/f)", Q_NULLPTR));
+        labelAddContactNumber->setText(QApplication::translate("SecondWindow", "ContactNumber:", Q_NULLPTR));
+        labelAddAlternateNumber->setText(QApplication::translate("SecondWindow", "AlternateNumber:", Q_NULLPTR));
+        labelAddEmailAdress->setText(QApplication::translate("SecondWindow", "EmailAddress:", Q_NULLPTR));
     } // retranslateUi
 
 };

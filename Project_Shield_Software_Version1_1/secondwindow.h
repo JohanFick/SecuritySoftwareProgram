@@ -22,6 +22,8 @@ private slots:
 
     void on_ButtonDone_clicked();
 
+    void on_AddCustomerButton_clicked();
+
 private:
     Ui::SecondWindow *ui;
 };

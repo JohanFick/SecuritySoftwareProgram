@@ -12,13 +12,14 @@ public:
    QString Determine_Person_Specific_Information();
    void Extract_Data_From_User_String();
 
-   QString UserSpecificInfo;
 
+   QString UserSpecificInfo;
+   QString User_ID,Device_ID,Connection_Status,Device_Status,Distress_Status,Alarm_status,Date,Time,Sensor_Type;
 
 
 private:
 
-    QString User_ID,Device_ID,Connection_Status,Device_Status,Distress_Status,Alarm_status,Date,Time,Sensor_Type;
+
     QString String_From_The_PI; // refer to the documentation for the string configuration
 
 

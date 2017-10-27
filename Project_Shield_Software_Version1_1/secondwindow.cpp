@@ -3,6 +3,7 @@
 #include <mydatabase.h>
 #include <interfacehandler.h>
 #include <QMessageBox>
+#include <QInputDialog>
 
 SecondWindow::SecondWindow(QWidget *parent) :
     QDialog(parent),
@@ -42,7 +43,8 @@ SecondWindow::SecondWindow(QWidget *parent) :
     ui->labelStreetAdress->setAttribute(Qt::WA_TranslucentBackground);
 
     ui->frame->hide();
-
+    ui->AddCustomerFrame->hide();
+  //  ui->AddCustomerFrame->setStyleSheet("background-image: url(:/Logo/paper.jpg)");
 
 
 }
@@ -205,5 +207,34 @@ void SecondWindow::on_ButtonDone_clicked()
     MyDatabase db;
 
     db.logEvent();
+    db.UpdateDeviceInfo();
     ui->frame->hide();
+
+
+}
+
+
+
+void SecondWindow::on_AddCustomerButton_clicked()
+{
+    QString dialogtext;
+    dialogtext = QInputDialog::getText(this,"Password","The password...",QLineEdit::Password,QString());
+
+    if(dialogtext == "admin")
+    {
+
+        ui->AddCustomerFrame->show();
+        ui->tabWidget->hide();
+        ui->AddCustomerButton->hide();
+
+
+
+    }
+    else{
+
+        QMessageBox::information(this,"Error","The password is incorrect...");
+
+    }
+
+
 }

@@ -2,11 +2,12 @@
 #include <QMessageBox>
 #include <interfacehandler.h>
 
+
 MyDatabase::MyDatabase(QWidget *parent) : QMainWindow(parent)
 {
 
-
-
+  String_From_The_PI = "1,1,1,1,1,1,2017-10-26,08:06:00,0";
+  ExtractDataFromString();
 
 }
 
@@ -132,15 +133,164 @@ void MyDatabase::logEvent()
 
     QSqlQuery *query = new QSqlQuery(DB);
 
+    InterfaceHandler handler;
     QString qsqlValues;
-    InterfaceHandler Handler;
 
-    //qsqlValues.append("(Null"+","+Handler.Device_ID+","+Handler.Sensor_Type+","+Handler.Date+","+Handler.Time+")");
+    qsqlValues.append("INSERT into incedentlog(IncidentNumber,DeviceID,SensorType,IncedentDate,IncedentTime) VALUES ");
+    qsqlValues.append("(0,"+Device_ID+","+Sensor_Type+",'"+Date+"','"+Time+"')");
 
-    query->exec("INSERT into incedentlog(IncidentNumber,DeviceID,SensorType,IncedentDate,IncedentTime) VALUES (0,1,2,'2017-10-26','10:00')");
 
-    qDebug() << query->lastError().text() ;
 
+    query->exec(qsqlValues);//"INSERT into incedentlog(IncidentNumber,DeviceID,SensorType,IncedentDate,IncedentTime) VALUES (0,1,2,'2017-10-26','10:00')");
+
+
+
+
+}
+
+void MyDatabase::UpdateDeviceInfo()
+{
+
+
+
+
+
+    if(Alarm_status == "1")
+    {
+        QSqlQuery *query = new QSqlQuery(DB);
+
+        QString qsqlString = "SELECT (amounttriggerd) FROM deviceinfo WHERE DeviceID =";
+        qsqlString.append(Device_ID);
+
+
+        query->exec(qsqlString);
+        query->first();
+    int AmountTriggerd = query->value(0).toString().toInt(nullptr,10);
+
+        AmountTriggerd++;
+
+        QString qsqlValues;
+        QString String_Amounttriggerd;
+
+        String_Amounttriggerd = QString::number(AmountTriggerd);
+
+        qDebug() << String_Amounttriggerd;
+
+        qsqlValues.append("UPDATE deviceinfo SET AmountTriggerd ="+ String_Amounttriggerd);
+        qsqlValues.append( " WHERE DeviceID =");
+        qsqlValues.append(Device_ID);
+
+
+         query->exec(qsqlValues);
+         qDebug() << query->lastError().text();
+
+    }
+
+
+    if(Connection_Status == "1")
+    {
+        QSqlQuery *query = new QSqlQuery(DB);
+        QString qsqlString;
+
+        qsqlString.append("UPDATE deviceinfo SET ConnectionStatus = 'Connected'");
+        qsqlString.append( " WHERE DeviceID =");
+        qsqlString.append(Device_ID);
+
+        query->exec(qsqlString);
+        qDebug() << query->lastError().text();
+
+
+    }
+    else
+    {
+        QSqlQuery *query = new QSqlQuery(DB);
+        QString  qsqlString;
+
+
+        qsqlString.append("UPDATE deviceinfo SET ConnectionStatus = 'Not-C'");
+        qsqlString.append( " WHERE DeviceID =");
+        qsqlString.append(Device_ID);
+
+        query->exec(qsqlString);
+
+
+    }
+
+    if(Device_Status=="1")
+    {
+        QSqlQuery *query = new QSqlQuery(DB);
+        QString qsqlString;
+
+        qsqlString.append("UPDATE deviceinfo SET DeviceStatus = 'Armed'");
+        qsqlString.append( " WHERE DeviceID =");
+        qsqlString.append(Device_ID);
+
+        query->exec(qsqlString);
+        qDebug() << query->lastError().text();
+
+    }
+    else
+    {
+      QSqlQuery *query = new QSqlQuery(DB);
+      QString qsqlString;
+
+      qsqlString.append("UPDATE deviceinfo SET DeviceStatus = 'Not-Armed'");
+      qsqlString.append( " WHERE DeviceID =");
+      qsqlString.append(Device_ID);
+
+      query->exec(qsqlString);
+      qDebug() << query->lastError().text();
+
+    }
+}
+
+void MyDatabase::ExtractDataFromString()
+{
+    int pos = 0;
+
+    pos = String_From_The_PI.indexOf(',',0);
+    User_ID = String_From_The_PI.left(pos);
+
+    String_From_The_PI.remove(0,pos+1);
+
+    pos = String_From_The_PI.indexOf(',',0);
+    Device_ID = String_From_The_PI.left(pos);
+
+    String_From_The_PI.remove(0,pos+1);
+
+    pos = String_From_The_PI.indexOf(',',0);
+    Connection_Status = String_From_The_PI.left(pos);
+
+    String_From_The_PI.remove(0,pos+1);
+    pos = String_From_The_PI.indexOf(',',0);
+    Device_Status = String_From_The_PI.left(pos);
+
+    String_From_The_PI.remove(0,pos+1);
+
+    pos = String_From_The_PI.indexOf(',',0);
+    Distress_Status = String_From_The_PI.left(pos);
+
+    String_From_The_PI.remove(0,pos+1);
+
+    pos = String_From_The_PI.indexOf(',',0);
+    Alarm_status = String_From_The_PI.left(pos);
+
+    String_From_The_PI.remove(0,pos+1);
+
+    pos = String_From_The_PI.indexOf(',',0);
+    Date = String_From_The_PI.left(pos);
+
+    String_From_The_PI.remove(0,pos+1);
+
+    pos = String_From_The_PI.indexOf(',',0);
+    Time = String_From_The_PI.left(pos);
+
+    String_From_The_PI.remove(0,pos+1);
+
+    pos = String_From_The_PI.indexOf(',',0);
+    Sensor_Type = String_From_The_PI.left(pos);
+
+    String_From_The_PI.remove(0,pos+1);
 
 }
 

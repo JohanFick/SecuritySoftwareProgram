@@ -1,0 +1,12 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\secondwindow.o
+./release\mydatabase.o
+./release\interfacehandler.o
+./release\baseclassinterfacehandler.o
+./release\qrc_resources.o
+./release\moc_mainwindow.o
+./release\moc_secondwindow.o
+./release\moc_mydatabase.o
+);

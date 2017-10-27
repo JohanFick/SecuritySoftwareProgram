@@ -1,0 +1,12 @@
+INPUT(
+./debug\main.o
+./debug\mainwindow.o
+./debug\secondwindow.o
+./debug\mydatabase.o
+./debug\interfacehandler.o
+./debug\baseclassinterfacehandler.o
+./debug\qrc_resources.o
+./debug\moc_mainwindow.o
+./debug\moc_secondwindow.o
+./debug\moc_mydatabase.o
+);
