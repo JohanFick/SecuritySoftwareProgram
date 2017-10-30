@@ -101,16 +101,16 @@ radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
      <rect>
       <x>380</x>
       <y>0</y>
-      <width>741</width>
-      <height>71</height>
+      <width>841</width>
+      <height>81</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Arial</family>
+      <family>Javanese Text</family>
       <pointsize>28</pointsize>
       <weight>75</weight>
-      <italic>false</italic>
+      <italic>true</italic>
       <bold>true</bold>
       <underline>false</underline>
       <stylestrategy>PreferDefault</stylestrategy>

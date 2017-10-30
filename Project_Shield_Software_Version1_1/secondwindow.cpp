@@ -44,6 +44,7 @@ SecondWindow::SecondWindow(QWidget *parent) :
 
     ui->frame->hide();
     ui->AddCustomerFrame->hide();
+    ui->deleteFrame->hide();
   //  ui->AddCustomerFrame->setStyleSheet("background-image: url(:/Logo/paper.jpg)");
 
 
@@ -235,6 +236,117 @@ void SecondWindow::on_AddCustomerButton_clicked()
         QMessageBox::information(this,"Error","The password is incorrect...");
 
     }
+
+
+}
+
+void SecondWindow::on_buttonDone_clicked()
+{
+    if((!ui->textEditAge->text().isEmpty()) && (!ui->textEditAlterNumber->text().isEmpty()) &&
+            (!ui->textEditContactNumber->text().isEmpty()) && (!ui->textEditDateInstalled->text().isEmpty()) &&
+            (!ui->textEditEmailAddress->text().isEmpty()) && (!ui->textEditModelNumber->text().isEmpty()) &&
+            (!ui->textEditName->text().isEmpty()) && (!ui->textEditSex->text().isEmpty()) && (!ui->textEditStreetAddress->text().isEmpty())
+            && (!ui->textEditSurname->text().isEmpty()) && (!ui->textEditTown->text().isEmpty()))
+    {
+
+        ui->AddCustomerFrame->hide();
+        ui->tabWidget->show();
+        ui->AddCustomerButton->show();
+
+        QString addUserInfo;
+        QString addDeviceInfo;
+
+        addUserInfo.append("Null,"+ui->textEditName->text()+","+ui->textEditSurname->text()+","+ui->textEditTown->text()+","
+                          +ui->textEditAge->text()+","+ui->textEditSex->text()+","+ui->textEditContactNumber->text()+","+ui->textEditAlterNumber->text()+","+ui->textEditEmailAddress->text()+","+ui->textEditStreetAddress->text());
+
+        addDeviceInfo.append("Null,"+ui->textEditDateInstalled->text()+","+ui->textEditModelNumber->text());
+
+        MyDatabase db;
+
+        db.addUserToDatabase(addUserInfo,addDeviceInfo);
+
+        clearthelineedits();
+
+    }
+    else{
+
+        QMessageBox::information(this,"Error","Please fill in all the needed information...");
+
+    }
+}
+
+void SecondWindow::clearthelineedits()
+{
+    ui->textEditAge->clear();
+    ui->textEditAlterNumber->clear();
+    ui->textEditContactNumber->clear();
+    ui->textEditDateInstalled->clear();
+    ui->textEditEmailAddress->clear();
+    ui->textEditModelNumber->clear();
+    ui->textEditName->clear();
+    ui->textEditSex->clear();
+    ui->textEditStreetAddress->clear();
+    ui->textEditSurname->clear();
+    ui->textEditTown->clear();
+
+}
+
+void SecondWindow::on_buttonCancel_clicked()
+{
+    ui->AddCustomerFrame->hide();
+    ui->tabWidget->show();
+    ui->AddCustomerButton->show();
+    clearthelineedits();
+}
+
+void SecondWindow::on_pushButton_3_clicked()
+{
+    MyDatabase db;
+
+    //db.deleteUser();
+
+    ui->deleteFrame->show();
+
+
+}
+
+void SecondWindow::on_buttonCancelDelete_clicked()
+{
+    QMessageBox::information(this,"Canceling","Delete Canceld...");
+    ui->deleteFrame->hide();
+    ui->textEditDeleteUserID->clear();
+
+}
+
+void SecondWindow::on_buttonOkDelete_clicked()
+{
+
+
+    if(ui->textEditDeleteUserID->text().isEmpty())
+    {
+      QMessageBox::information(this,"Error","Please fill-in the userID...");
+
+    }
+    else if(!ui->textEditDeleteUserID->text().toInt(nullptr,10))
+    {
+
+      QMessageBox::information(this,"Error","Please fill-in an integer...");
+    }
+    else
+    {
+        QString UserIDStringValue;
+        MyDatabase db;
+
+        UserIDStringValue.append(ui->textEditDeleteUserID->text());
+        db.deleteUser(UserIDStringValue);
+
+        ui->deleteFrame->hide();
+        ui->textEditDeleteUserID->clear();
+
+
+
+    }
+
 
 
 }

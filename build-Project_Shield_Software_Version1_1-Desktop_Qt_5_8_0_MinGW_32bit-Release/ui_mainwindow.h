@@ -107,12 +107,12 @@ public:
         Version_Text->setFont(font);
         MainText = new QLabel(centralWidget);
         MainText->setObjectName(QStringLiteral("MainText"));
-        MainText->setGeometry(QRect(380, 0, 741, 71));
+        MainText->setGeometry(QRect(380, 0, 841, 81));
         QFont font1;
-        font1.setFamily(QStringLiteral("Arial"));
+        font1.setFamily(QStringLiteral("Javanese Text"));
         font1.setPointSize(28);
         font1.setBold(true);
-        font1.setItalic(false);
+        font1.setItalic(true);
         font1.setUnderline(false);
         font1.setWeight(75);
         font1.setStyleStrategy(QFont::PreferDefault);

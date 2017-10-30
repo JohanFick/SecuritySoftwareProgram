@@ -1,12 +1,13 @@
 #include "mydatabase.h"
 #include <QMessageBox>
 #include <interfacehandler.h>
+#include <secondwindow.h>
 
 
 MyDatabase::MyDatabase(QWidget *parent) : QMainWindow(parent)
 {
 
-  String_From_The_PI = "1,1,1,1,1,1,2017-10-26,08:06:00,0";
+  String_From_The_PI = "10,1,1,1,1,1,2017-10-26,08:06:00,0";
   ExtractDataFromString();
 
 }
@@ -242,6 +243,137 @@ void MyDatabase::UpdateDeviceInfo()
       qDebug() << query->lastError().text();
 
     }
+}
+
+void MyDatabase::addUserToDatabase(QString addUserInfo,QString addDeviceInfo)
+{
+    QString addUserId,addName,addSurname,addTown,addAge,addSex,addContact_Number,addAlternate_Number,addEmail_Adress,addStreet_adress;
+    QString addDeviceId,addConnectionStatus,addDeviceStatus,addAmountTriggerd,addDateInstalled,addModelNumber;
+    QString sqlqueryStringUserInfo,sqlqueryStringDeviceInfo;
+    int pos;
+
+    QSqlQuery *query = new QSqlQuery(DB);
+    sqlqueryStringUserInfo = "INSERT into userinfo(UserId,Name,surname,hometown,age,sex,contcatnumber,alternatenumber,emailadress,StreetAdress) VALUES ";
+    sqlqueryStringDeviceInfo ="INSERT into deviceinfo(DeviceID,UserID,ConnectionStatus,DeviceStatus,AmountTriggerd,DateInstalled,ModelNumber) VALUES ";
+
+    //Determine the User info from the string
+
+    pos = addUserInfo.indexOf(',',0);
+    addUserId = addUserInfo.left(pos);
+
+    addUserInfo.remove(0,pos+1);
+
+    pos = addUserInfo.indexOf(',',0);
+    addName = addUserInfo.left(pos);
+
+    addUserInfo.remove(0,pos+1);
+
+    pos = addUserInfo.indexOf(',',0);
+    addSurname = addUserInfo.left(pos);
+
+    addUserInfo.remove(0,pos+1);
+
+    pos = addUserInfo.indexOf(',',0);
+    addTown = addUserInfo.left(pos);
+
+    addUserInfo.remove(0,pos+1);
+
+    pos = addUserInfo.indexOf(',',0);
+    addAge = addUserInfo.left(pos);
+
+    addUserInfo.remove(0,pos+1);
+
+    pos = addUserInfo.indexOf(',',0);
+    addSex = addUserInfo.left(pos);
+
+    addUserInfo.remove(0,pos+1);
+
+    pos = addUserInfo.indexOf(',',0);
+    addContact_Number = addUserInfo.left(pos);
+
+    addUserInfo.remove(0,pos+1);
+
+    pos = addUserInfo.indexOf(',',0);
+    addAlternate_Number= addUserInfo.left(pos);
+
+    addUserInfo.remove(0,pos+1);
+
+    pos = addUserInfo.indexOf(',',0);
+    addEmail_Adress = addUserInfo.left(pos);
+
+    addUserInfo.remove(0,pos+1);
+
+    pos = addUserInfo.indexOf(',',0);
+    addStreet_adress = addUserInfo.left(pos);
+
+    addUserInfo.remove(0,pos+1);
+
+    // Determine the Device information from the string
+    pos = addDeviceInfo.indexOf(',',0);
+    addDeviceId= addDeviceInfo.left(pos);
+
+    addDeviceInfo.remove(0,pos+1);
+
+    pos = addDeviceInfo.indexOf(',',0);
+    addDateInstalled =addDeviceInfo.left(pos);
+
+    addDeviceInfo.remove(0,pos+1);
+
+    pos = addDeviceInfo.indexOf(',',0);
+    addModelNumber =addDeviceInfo.left(pos);
+
+    addDeviceInfo.remove(0,pos+1);
+
+    addConnectionStatus = "Establish";
+    addDeviceStatus = "Establish";
+    addAmountTriggerd = "0";
+
+    //"INSERT into userinfo(UserId, name, surname,hometown,age,sex,contcatnumber,alternatenumber,emailadress) VALUES (7,'Bart','Simpson','Springfield',10,'m','05616516','051561','Test@gmail.com')");
+
+    sqlqueryStringUserInfo.append("(0,'"+addName+"','"+addSurname+"','"+addTown+"',"+addAge+",'"+addSex+"','"+addContact_Number+"','"
+                                  +addAlternate_Number+"','"+addEmail_Adress+"','"+addStreet_adress+"')");
+
+    qDebug() << sqlqueryStringUserInfo;
+
+     query->exec(sqlqueryStringUserInfo);
+
+     qDebug() << query->lastError().text() ;
+
+
+     query->exec("SELECT * FROM userinfo ORDER BY UserID DESC LIMIT 1");
+
+     qDebug() << query->lastError().text() ;
+
+
+     query->first();
+
+     addUserId = query->value(0).toString();
+
+    sqlqueryStringDeviceInfo.append("("+addDeviceId+","+addUserId+",'"+addConnectionStatus+"','"+addDeviceStatus+"','"+addAmountTriggerd+"','"+addDateInstalled+"','"+addModelNumber+"')");
+
+    qDebug() << sqlqueryStringDeviceInfo;
+
+    query->exec(sqlqueryStringDeviceInfo);
+
+     qDebug() << query->lastError().text();
+
+
+}
+
+void MyDatabase::deleteUser(QString string)
+{
+    QSqlQuery *query = new QSqlQuery(DB);
+
+    QString qsqlstring,qsqlstringDevice;
+
+    qsqlstring.append("DELETE FROM userinfo WHERE UserID = "+string+" LIMIT 1");
+    query->exec(qsqlstring);
+    qsqlstringDevice.append("DELETE FROM deviceinfo WHERE UserID = "+string+" LIMIT 1");
+    query->exec(qsqlstringDevice);
+
+
+qDebug() << query->lastError().text();
+
 }
 
 void MyDatabase::ExtractDataFromString()

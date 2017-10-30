@@ -24,6 +24,18 @@ private slots:
 
     void on_AddCustomerButton_clicked();
 
+    void on_buttonDone_clicked();
+
+    void clearthelineedits();
+
+    void on_buttonCancel_clicked();
+
+    void on_pushButton_3_clicked();
+
+    void on_buttonCancelDelete_clicked();
+
+    void on_buttonOkDelete_clicked();
+
 private:
     Ui::SecondWindow *ui;
 };

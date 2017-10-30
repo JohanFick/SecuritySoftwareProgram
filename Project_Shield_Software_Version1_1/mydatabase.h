@@ -19,7 +19,8 @@ public:
     void ExtractDataFromString();
     void logEvent();
     void UpdateDeviceInfo();
-
+    void addUserToDatabase(QString addUserInfo,QString addDeviceInfo);
+    void deleteUser(QString string);
 
 
 
