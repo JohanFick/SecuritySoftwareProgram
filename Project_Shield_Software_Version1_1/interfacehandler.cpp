@@ -10,7 +10,7 @@ using namespace std;
 
 InterfaceHandler::InterfaceHandler()
 {
-    String_From_The_PI = "1,1,0,0,1,1,2017-10-26,08:06:00,0";
+    String_From_The_PI = "9,1,0,0,1,1,2017-10-26,08:06:00,0";
 
 }
 
