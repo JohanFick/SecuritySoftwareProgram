@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHBoxLayout>
@@ -51,6 +52,7 @@ public:
     QLabel *labelContactNumber;
     QLabel *labelAlternateNumber;
     QLabel *labelEmalAdress;
+    QCheckBox *EmailCheckbox;
     QPushButton *AddCustomerButton;
     QTabWidget *tabWidget;
     QWidget *User_Info;
@@ -252,6 +254,9 @@ public:
 
         verticalLayout->addWidget(labelEmalAdress);
 
+        EmailCheckbox = new QCheckBox(frame);
+        EmailCheckbox->setObjectName(QStringLiteral("EmailCheckbox"));
+        EmailCheckbox->setGeometry(QRect(290, 380, 101, 21));
         AddCustomerButton = new QPushButton(SecondWindow);
         AddCustomerButton->setObjectName(QStringLiteral("AddCustomerButton"));
         AddCustomerButton->setGeometry(QRect(740, 480, 101, 31));
@@ -588,6 +593,7 @@ public:
         labelContactNumber->setText(QString());
         labelAlternateNumber->setText(QString());
         labelEmalAdress->setText(QString());
+        EmailCheckbox->setText(QApplication::translate("SecondWindow", "Automatic Email", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
         AddCustomerButton->setToolTip(QApplication::translate("SecondWindow", "<html><head/><body><p>This allows the admin to add a user to the database.</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP

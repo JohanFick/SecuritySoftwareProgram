@@ -4,9 +4,10 @@ INPUT(
 ./release\secondwindow.o
 ./release\mydatabase.o
 ./release\interfacehandler.o
-./release\baseclassinterfacehandler.o
+./release\smtp.o
 ./release\qrc_resources.o
 ./release\moc_mainwindow.o
 ./release\moc_secondwindow.o
 ./release\moc_mydatabase.o
+./release\moc_smtp.o
 );

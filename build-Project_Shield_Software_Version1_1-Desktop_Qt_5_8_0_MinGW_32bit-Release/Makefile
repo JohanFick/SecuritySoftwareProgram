@@ -224,6 +224,7 @@ Makefile: ../Project_Shield_Software_Version1_1/Project_Shield_Software_Version1
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Widgets.prl \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Gui.prl \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Sql.prl \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Network.prl \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Core.prl
 	$(QMAKE) -o Makefile ..\Project_Shield_Software_Version1_1\Project_Shield_Software_Version1_1.pro -spec win32-g++
 C:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/spec_pre.prf:
@@ -391,6 +392,7 @@ C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/qtmain.prl:
 C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Widgets.prl:
 C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Gui.prl:
 C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Sql.prl:
+C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Network.prl:
 C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\Project_Shield_Software_Version1_1\Project_Shield_Software_Version1_1.pro -spec win32-g++

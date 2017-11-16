@@ -36,8 +36,13 @@ private slots:
 
     void on_buttonOkDelete_clicked();
 
+
+
+
+
 private:
     Ui::SecondWindow *ui;
+    QString Email;
 };
 
 #endif // SECONDWINDOW_H

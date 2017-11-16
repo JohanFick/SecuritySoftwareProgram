@@ -4,9 +4,10 @@ INPUT(
 ./debug\secondwindow.o
 ./debug\mydatabase.o
 ./debug\interfacehandler.o
-./debug\baseclassinterfacehandler.o
+./debug\smtp.o
 ./debug\qrc_resources.o
 ./debug\moc_mainwindow.o
 ./debug\moc_secondwindow.o
 ./debug\moc_mydatabase.o
+./debug\moc_smtp.o
 );

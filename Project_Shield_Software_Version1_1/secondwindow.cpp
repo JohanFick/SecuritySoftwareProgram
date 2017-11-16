@@ -15,7 +15,6 @@ SecondWindow::SecondWindow(QWidget *parent) :
     this->hide();
     QPixmap *Logo = new QPixmap(":/Logo/Logo_Small_2.png");
 
-
     ui->label->setPixmap(*Logo);
     ui->label->setAttribute(Qt::WA_TranslucentBackground);
 
@@ -45,7 +44,9 @@ SecondWindow::SecondWindow(QWidget *parent) :
     ui->frame->hide();
     ui->AddCustomerFrame->hide();
     ui->deleteFrame->hide();
-  //  ui->AddCustomerFrame->setStyleSheet("background-image: url(:/Logo/paper.jpg)");
+    ui->pushButton->hide();
+    //   ui->pushButton_2->hide();
+    on_pushButton_clicked();
 
 
 }
@@ -55,7 +56,7 @@ SecondWindow::~SecondWindow()
     delete ui;
 }
 
-void SecondWindow::on_pushButton_clicked()
+void SecondWindow::on_pushButton_clicked() // Done
 {
 
      MyDatabase db ;
@@ -90,8 +91,6 @@ void SecondWindow::on_pushButton_2_clicked()
     InterfaceHandler Handler;
 
     Handler.Exctract_Data_From_The_String();
-
-    //qDebug() << endl << "Situation_Type == " <<
 
     QString UserSpecificInfo;
 
@@ -138,6 +137,7 @@ void SecondWindow::on_pushButton_2_clicked()
 
     pos = UserSpecificInfo.indexOf(',',0);
     Email_Adress = UserSpecificInfo.left(pos);
+    Email = Email_Adress;
 
     UserSpecificInfo.remove(0,pos+1);
 
@@ -160,8 +160,10 @@ void SecondWindow::on_pushButton_2_clicked()
     switch (Handler.Determine_The_Situation()) {
     case 1:
 
+        db.determinemsglow();
         ProtocolString.append("Low Risk - Send email to: "+Email_Adress+"\n");
         ProtocolString.append("Call "+Name+":"+Contact_Number+"\n"+"If person doesn't respond Call alternative :"+Alternate_Number+"\n");
+
 
         ui->labelInstructionstext->setText(ProtocolString);
         ui->labelInstructionstext->adjustSize();
@@ -172,6 +174,8 @@ void SecondWindow::on_pushButton_2_clicked()
         break;
     case 2:
 
+
+        db.determinemsgMed();
         ProtocolString.append("Meduim Risk - Call "+Name+":"+Contact_Number+"\n"+"If person doesn't respond Call alternative :"+Alternate_Number+"\n");
         ProtocolString.append("If no answer Dispatch a unit to...\n" +Town+","+Street_adress+"\n");
         ProtocolString.append("Send email to: "+Email_Adress);
@@ -187,6 +191,7 @@ void SecondWindow::on_pushButton_2_clicked()
 
     case 3:
 
+        db.determinemsgHigh();
         ProtocolString.append("High Risk - Dispatch a unit to...\n" +Town+","+Street_adress+"\n");
         ProtocolString.append("Call "+Name+":"+Contact_Number+"\n"+"If person doesn't respond Call alternative :"+Alternate_Number+"\n");
         ProtocolString.append("Send email to: "+Email_Adress);
@@ -209,6 +214,15 @@ void SecondWindow::on_ButtonDone_clicked()
 
     db.logEvent();
     db.UpdateDeviceInfo();
+
+   qDebug() << " Sending the email.....................";
+
+    if(ui->EmailCheckbox->checkState())
+    {
+        db.sendEmail(Email);
+    }
+
+
     ui->frame->hide();
 
 

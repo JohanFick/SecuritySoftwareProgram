@@ -7,6 +7,10 @@
 #include <QString>
 #include <QSqlQuery>
 #include <interfacehandler.h>
+#include <smtp.h>
+
+
+
 
 class MyDatabase : public QMainWindow
 {
@@ -21,6 +25,10 @@ public:
     void UpdateDeviceInfo();
     void addUserToDatabase(QString addUserInfo,QString addDeviceInfo);
     void deleteUser(QString string);
+    void sendEmail(QString);
+    void determinemsglow();
+    void determinemsgMed();
+    void determinemsgHigh();
 
 
 
@@ -33,7 +41,7 @@ public:
     QString Name,Surname,Town,Age,Sex,Contact_Number,Alternate_Number,Email_Adress,Street_adress;
     QString User_ID,Device_ID,Connection_Status,Device_Status,Distress_Status,Alarm_status,Date,Time,Sensor_Type;
     QString String_From_The_PI;
-
+    QString emailSubject,emailMessage;
 
 private:
 
@@ -46,6 +54,9 @@ private:
 signals:
 
 public slots:
+
+private slots:
+void mailSent(QString);
 };
 
 #endif // MYDATABASE_H

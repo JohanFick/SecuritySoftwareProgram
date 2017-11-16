@@ -4,10 +4,11 @@
 #include <secondwindow.h>
 
 
+
 MyDatabase::MyDatabase(QWidget *parent) : QMainWindow(parent)
 {
 
-  String_From_The_PI = "10,1,1,1,1,1,2017-10-26,08:06:00,0";
+  String_From_The_PI = "1,1,0,0,1,1,2017-10-26,08:06:00,0";
   ExtractDataFromString();
 
 }
@@ -104,6 +105,8 @@ QString MyDatabase::determine_User_Information(QString UserID)
             Email_Adress = query.value(7).toString();
             Street_adress = query.value(8).toString();
 
+
+
             QString string;
 
             string.append(Name);
@@ -140,21 +143,12 @@ void MyDatabase::logEvent()
     qsqlValues.append("INSERT into incedentlog(IncidentNumber,DeviceID,SensorType,IncedentDate,IncedentTime) VALUES ");
     qsqlValues.append("(0,"+Device_ID+","+Sensor_Type+",'"+Date+"','"+Time+"')");
 
-
-
     query->exec(qsqlValues);//"INSERT into incedentlog(IncidentNumber,DeviceID,SensorType,IncedentDate,IncedentTime) VALUES (0,1,2,'2017-10-26','10:00')");
-
-
-
 
 }
 
 void MyDatabase::UpdateDeviceInfo()
 {
-
-
-
-
 
     if(Alarm_status == "1")
     {
@@ -309,6 +303,7 @@ void MyDatabase::addUserToDatabase(QString addUserInfo,QString addDeviceInfo)
     addUserInfo.remove(0,pos+1);
 
     // Determine the Device information from the string
+
     pos = addDeviceInfo.indexOf(',',0);
     addDeviceId= addDeviceInfo.left(pos);
 
@@ -371,8 +366,71 @@ void MyDatabase::deleteUser(QString string)
     qsqlstringDevice.append("DELETE FROM deviceinfo WHERE UserID = "+string+" LIMIT 1");
     query->exec(qsqlstringDevice);
 
+    qDebug() << query->lastError().text();
 
-qDebug() << query->lastError().text();
+}
+
+void MyDatabase::sendEmail(QString Email)
+{
+    QString emailName,emailPassword,serverName,serverPort,emailRecipant;
+
+
+    emailName = "johanfick9@gmail.com";
+    emailPassword = "weskus0842280619";
+    serverName = "smtp.gmail.com";
+    serverPort = "465";
+    emailRecipant = Email;
+
+ qDebug() << " The emial is..." << Email;
+
+    if((Alarm_status.toInt(nullptr,10) == 1))
+    {
+        determinemsglow();
+    }
+
+    if((Distress_Status.toInt(nullptr,10) == 1) && (Alarm_status.toInt(nullptr,10) == 0))
+    {
+        determinemsgMed();
+    }
+
+    if((Distress_Status.toInt(nullptr,10) == 1) && (Alarm_status.toInt(nullptr,10) == 1) )
+    {
+       determinemsgHigh();
+    }
+
+
+    Smtp* smtp = new Smtp(emailName, emailPassword ,serverName, serverPort.toInt(nullptr,10));
+    connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
+
+    smtp->sendMail(emailName, emailRecipant,emailSubject,emailMessage);
+
+}
+
+void MyDatabase::determinemsglow()
+{
+    emailSubject = "EMEREGENCY-Low Threat";
+    emailMessage = "Possible break in detected... Please respond to email or call 0752564895";
+}
+
+void MyDatabase::determinemsgMed()
+{
+    emailSubject ="EMEREGENCY-Medium Threat";
+    emailMessage = "Possible break in detected... Please respond to email or call 0752564895";
+
+}
+
+void MyDatabase::determinemsgHigh()
+{
+    emailSubject = "EMEREGENCY-High Threat";
+    emailMessage = "Possible break in detected... Please respond to email or call 0752564895";
+
+}
+
+void MyDatabase::mailSent(QString status)
+{
+
+    if(status == "Message sent")
+        QMessageBox::warning( 0, tr( "Qt Simple SMTP client" ), tr( "Message sent!\n\n" ) );
 
 }
 

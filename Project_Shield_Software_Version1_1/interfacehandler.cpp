@@ -10,7 +10,7 @@ using namespace std;
 
 InterfaceHandler::InterfaceHandler()
 {
-    String_From_The_PI = "10,1,0,1,1,1,2017-10-26,08:06:00,0";
+    String_From_The_PI = "1,1,0,0,1,1,2017-10-26,08:06:00,0";
 
 }
 
@@ -82,6 +82,7 @@ int InterfaceHandler::Determine_The_Situation()
     int Protocol_Type = 0;
 
     QTime time;
+    MyDatabase db;
 
 
 
@@ -97,6 +98,7 @@ int InterfaceHandler::Determine_The_Situation()
 
     if((Distress_Status.toInt(nullptr,10) == 1) && (Alarm_status.toInt(nullptr,10) == 1) )
     {
+
        Protocol_Type = 3;
     }
 
