@@ -4,20 +4,54 @@
 #include <mydatabase.h>
 #include <QMessageBox>
 #include <QTime>
+#include <MY_thread.h>
+#include <string.h>
+#include <iostream>
+#include <fstream>
 
 using namespace std;
 
 
 InterfaceHandler::InterfaceHandler()
 {
-    String_From_The_PI = "9,1,0,0,1,1,2017-10-26,08:06:00,0";
+
+
+
+    string FileName = "SaveFile.txt",myLine,strSave,strSave2;
+
+   ifstream Save_TextFile(FileName);
+
+
+   if (Save_TextFile.is_open())
+   {
+     while (getline(Save_TextFile,myLine))
+     {
+
+     String_From_The_PI  = QString::fromStdString(myLine);
+
+         //String_From_The_PI = "9,1,0,0,1,1,2017-10-26,08:06:00,0";
+
+
+
+     }
+   }
+
+
+
+
+
+   Save_TextFile.close();
 
 }
+
+
 
 void InterfaceHandler::Exctract_Data_From_The_String()
 {
 
     int pos = 0;
+
+    QString HoldString=String_From_The_PI;
 
     pos = String_From_The_PI.indexOf(',',0);
     User_ID = String_From_The_PI.left(pos);
@@ -63,6 +97,9 @@ void InterfaceHandler::Exctract_Data_From_The_String()
 
     String_From_The_PI.remove(0,pos+1);
 
+    String_From_The_PI = HoldString;
+
+    qDebug() << endl << " This is for the interface handler..........";
     qDebug() << endl << "Name = " << User_ID;
     qDebug() << endl << "Device_ID = " << Device_ID;
     qDebug() << endl << "Connection_Status = " << Connection_Status;
@@ -123,6 +160,10 @@ void InterfaceHandler::Extract_Data_From_User_String()
 {
 
 
+}
+
+void InterfaceHandler::setstring()
+{
 
 }
 

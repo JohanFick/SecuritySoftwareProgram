@@ -2,14 +2,48 @@
 #include <QMessageBox>
 #include <interfacehandler.h>
 #include <secondwindow.h>
+#include <MY_thread.h>
+#include <string.h>
+#include <iostream>
+#include <fstream>
+
+using namespace std ;
+
+
 
 
 
 MyDatabase::MyDatabase(QWidget *parent) : QMainWindow(parent)
 {
 
-  String_From_The_PI = "9,1,0,0,1,1,2017-10-26,08:06:00,0";
-  ExtractDataFromString();
+
+   string FileName = "SaveFile.txt",myLine,Str2PI,strSave,strSave2;
+
+
+   ifstream Save_TextFile(FileName);
+
+
+   if (Save_TextFile.is_open())
+   {
+     while (getline(Save_TextFile,myLine))
+     {
+
+         String_From_The_PI  = QString::fromStdString(myLine);
+         //String_From_The_PI = "9,1,0,0,1,1,2017-10-26,08:06:00,0";
+         ExtractDataFromString();
+
+
+     }
+   }
+
+
+
+
+
+   Save_TextFile.close();
+
+
+
 
 }
 
@@ -426,6 +460,12 @@ void MyDatabase::determinemsgHigh()
 
 }
 
+void MyDatabase::setstring()
+{
+
+
+}
+
 void MyDatabase::mailSent(QString status)
 {
 
@@ -478,9 +518,22 @@ void MyDatabase::ExtractDataFromString()
     String_From_The_PI.remove(0,pos+1);
 
     pos = String_From_The_PI.indexOf(',',0);
-    Sensor_Type = String_From_The_PI.left(pos);
+    Sensor_Type = String_From_The_PI.left(pos)[1];
 
     String_From_The_PI.remove(0,pos+1);
+
+    qDebug() << endl << " This is for the database..........";
+    qDebug() << endl << "Name = " << User_ID;
+    qDebug() << endl << "Device_ID = " << Device_ID;
+    qDebug() << endl << "Connection_Status = " << Connection_Status;
+    qDebug() << endl << "Device_Status = " << Device_Status;
+    qDebug() << endl << "Distress_Status = " << Distress_Status;
+    qDebug() << endl << "Alarm_Status = " << Alarm_status;
+    qDebug() << endl << "Date = " << Date;
+    qDebug() << endl << "Time = " << Time;
+    qDebug() << endl << "Sensor_Type = " << Sensor_Type;
+    qDebug() << endl << "String = " << String_From_The_PI;
+
 
 }
 

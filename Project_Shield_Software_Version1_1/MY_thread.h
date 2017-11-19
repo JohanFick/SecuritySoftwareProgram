@@ -12,18 +12,24 @@ class MY_Thread : public QThread
     Q_OBJECT
 public:
     explicit MY_Thread(int ID,QObject *parent = 0);
+    QByteArray data_fin;
     void run();
 private:
      QTcpSocket *soc;
      int socketdescriptor;
      Crypt *cry;
 
+
 signals:
      void error(QTcpSocket::SocketError socket_error);
+     //void Button();
+
 
 public slots:
      void readyRead();
      void disconnect();
+     void safevariable();
+
 
 };
 

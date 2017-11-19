@@ -1,6 +1,7 @@
 #ifndef INTERFACEHANDLER_H
 #define INTERFACEHANDLER_H
 #include <Qstring>
+#include <MY_thread.h>
 
 
 class InterfaceHandler
@@ -11,6 +12,7 @@ public:
    int  Determine_The_Situation();
    QString Determine_Person_Specific_Information();
    void Extract_Data_From_User_String();
+   void setstring();
 
 
    QString UserSpecificInfo;
@@ -20,6 +22,7 @@ public:
 private:
 
 
+    MY_Thread *thread;
     QString String_From_The_PI; // refer to the documentation for the string configuration
 
 

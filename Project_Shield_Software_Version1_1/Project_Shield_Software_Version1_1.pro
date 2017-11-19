@@ -31,13 +31,19 @@ SOURCES += main.cpp\
     secondwindow.cpp \
     mydatabase.cpp \
     interfacehandler.cpp \
-    smtp.cpp
+    smtp.cpp \
+    crypt.cpp \
+    MY_thread.cpp \
+    myserver.cpp
 
 HEADERS  += mainwindow.h \
     secondwindow.h \
     mydatabase.h \
     interfacehandler.h \
-    smtp.h
+    smtp.h \
+    crypt.h \
+    MY_thread.h \
+    myserver.h
 
 FORMS    += mainwindow.ui \
     secondwindow.ui

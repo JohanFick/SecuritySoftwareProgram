@@ -8,6 +8,8 @@
 #include <QSqlQuery>
 #include <interfacehandler.h>
 #include <smtp.h>
+#include <MY_thread.h>
+
 
 
 
@@ -29,6 +31,7 @@ public:
     void determinemsglow();
     void determinemsgMed();
     void determinemsgHigh();
+    void setstring();
 
 
 
@@ -37,6 +40,7 @@ public:
     QSqlTableModel *Device_Info_model;
     QSqlTableModel *Device_Security_model;
     QSqlTableModel *Incedent_Info_model;
+
 
     QString Name,Surname,Town,Age,Sex,Contact_Number,Alternate_Number,Email_Adress,Street_adress;
     QString User_ID,Device_ID,Connection_Status,Device_Status,Distress_Status,Alarm_status,Date,Time,Sensor_Type;
@@ -49,6 +53,9 @@ private:
     QString DB_Name = "Test";
 
     QSqlDatabase  DB;
+
+    MY_Thread *thread;
+
 
 
 signals:

@@ -18,7 +18,7 @@ public:
 private slots:
     void on_pushButton_clicked();
 
-    void on_pushButton_2_clicked();
+
 
     void on_ButtonDone_clicked();
 
@@ -35,6 +35,12 @@ private slots:
     void on_buttonCancelDelete_clicked();
 
     void on_buttonOkDelete_clicked();
+
+
+    void on_pushButton_2_clicked();
+
+public slots:
+
 
 
 

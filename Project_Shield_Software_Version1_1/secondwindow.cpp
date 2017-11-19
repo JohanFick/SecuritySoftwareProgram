@@ -49,6 +49,8 @@ SecondWindow::SecondWindow(QWidget *parent) :
     on_pushButton_clicked();
 
 
+
+
 }
 
 SecondWindow::~SecondWindow()
@@ -78,6 +80,7 @@ void SecondWindow::on_pushButton_clicked() // Done
      ui->Device_security->resizeRowsToContents();
      ui->Incedent_View->resizeRowsToContents();
 
+     //db.UpdateDeviceInfo();
 
 }
 
@@ -85,6 +88,8 @@ void SecondWindow::on_pushButton_2_clicked()
 {
 
     MyDatabase db;
+
+    db.setstring();
 
    // db.databaseUpadte();
 
@@ -212,6 +217,8 @@ void SecondWindow::on_ButtonDone_clicked()
 {
     MyDatabase db;
 
+    db.setstring();
+
     db.logEvent();
     db.UpdateDeviceInfo();
 
@@ -224,6 +231,8 @@ void SecondWindow::on_ButtonDone_clicked()
 
 
     ui->frame->hide();
+
+    on_pushButton_clicked();
 
 
 }
@@ -350,6 +359,7 @@ void SecondWindow::on_buttonOkDelete_clicked()
     {
         QString UserIDStringValue;
         MyDatabase db;
+        db.setstring();
 
         UserIDStringValue.append(ui->textEditDeleteUserID->text());
         db.deleteUser(UserIDStringValue);
